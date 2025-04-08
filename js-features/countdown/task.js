@@ -37,8 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
         link.download = '1.jpg';
         document.body.appendChild(link);
         link.click();
-        document.body.removeChild(link);
-      }, 100)
+        document.body.removeChild(link); /*не получается реализовать начало загрузки файла,
+         буду благодарен если подскажите в чем причина*/
+      }, 0)
     }
 
     if(countTimerSs < 10) {
