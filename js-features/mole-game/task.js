@@ -12,13 +12,11 @@ function getHole() {
         missCounter.textContent = String(Number(missCounter.textContent) + 1);
       }
       if(Number(deathCounter.textContent) === 10) {
-        stop();
         alert('Вы победили');
         deathCounter.textContent = '0';
         missCounter.textContent = '0';
-      }
+        }
       if (Number(missCounter.textContent) === 5) {
-        stop();
         alert('Вы проиграли');
         deathCounter.textContent = '0';
         missCounter.textContent = '0'

@@ -1,3 +1,4 @@
+/*
 let clickerCount = document.getElementById("clicker__counter");
 let cookie = document.getElementById("cookie");
 let clickerSpeed = document.getElementById("clicker__speed");
@@ -30,3 +31,16 @@ cookie.addEventListener("click", function () {
 });
 
 
+*/
+const cookie = document.getElementById("cookie");
+const counterDisplay = document.getElementById("clicker__counter");
+const speedDisplay = document.getElementById("clicker__speed");
+
+let prevTimestamp = Date.now();
+
+cookie.onclick = () => {
+  cookie.width = ++counterDisplay.textContent % 2 ? 250 : 200;
+  const elapsedTime = (Date.now() - prevTimestamp) / 1000;
+  speedDisplay.textContent = (1 / elapsedTime).toFixed(2);
+  prevTimestamp = Date.now();
+}
