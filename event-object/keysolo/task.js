@@ -4,27 +4,46 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
+    this.currentSymbol = [...container.querySelectorAll('.symbol')];
+    this.timerCount = document.querySelector('#timer');
+    this.intervalID = null;
+    this.duration = null;
 
     this.reset();
-
     this.registerEvents();
+
   }
+
 
   reset() {
     this.setNewWord();
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
+    this.timerCount.textContent = 0;
+  }
+
+  startTimer() {
+    this.timerCount.textContent = this.duration;
+    let countTimer = this.duration;
+    this.intervalId = setInterval(() => {
+      this.timerCount.textContent = String(countTimer--);
+
+      if (countTimer < -1) {
+        this.fail();
+      }
+    }, 1000)
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода символа вызываем this.success()
-      При неправильном вводе символа - this.fail();
-      DOM-элемент текущего символа находится в свойстве this.currentSymbol.
-     */
+    document.addEventListener( 'keydown', e => {
+      const symbol = this.currentSymbol.textContent;
+      const getSymbol = (e.key);
+      if(getSymbol.toLowerCase() === symbol.toLowerCase()) {
+        this.success();
+      } else {
+        this.fail();
+      }
+    })
   }
 
   success() {
@@ -54,8 +73,10 @@ class Game {
 
   setNewWord() {
     const word = this.getWord();
-
+    this.duration = word.length;
     this.renderWord(word);
+    clearInterval(this.intervalId);
+    this.startTimer(this.duration);
   }
 
   getWord() {
@@ -91,4 +112,3 @@ class Game {
 }
 
 new Game(document.getElementById('game'))
-
