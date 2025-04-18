@@ -55,5 +55,5 @@ bookControlBackground.addEventListener('click', e => {
       e.preventDefault();
     })
   }
-})
+});
 
