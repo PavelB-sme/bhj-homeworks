@@ -1,11 +1,11 @@
-const revealBlock = document.querySelector('.reveal');
+const revealBlock = document.querySelectorAll('.reveal');
 
 function isVisible(element) {
-  return element.getBoundingClientRect().bottom > 0 && element.getBoundingClientRect().top < window.innerHeight;
+  element.forEach((block) => {
+    block.getBoundingClientRect().bottom > 0 && block.getBoundingClientRect().top < window.innerHeight ?
+      block.classList.add('reveal_active') :
+      block.classList.remove('reveal_active');
+  })
 }
 
-window.addEventListener('scroll', () => {
-  isVisible(revealBlock) ?
-    revealBlock.classList.add('reveal_active') :
-    revealBlock.classList.remove('reveal_active');
-})
+window.addEventListener('scroll', () => {isVisible(revealBlock)})

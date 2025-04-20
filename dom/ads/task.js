@@ -12,10 +12,8 @@ function rotate (a) {
     next.classList.add('rotator__case_active');
     next.style.color = next.dataset.color;
     const newSpeed = +(next.dataset.speed);
-    clearInterval(intervalID);
-    intervalID = setInterval(() => rotate(a), newSpeed);
+    setTimeout(() => {rotate(a)}, newSpeed);
 }
 
-
-let intervalID = setInterval(() => rotate(rotators), speed);
+setTimeout(()=> rotate(rotators), speed);
 
