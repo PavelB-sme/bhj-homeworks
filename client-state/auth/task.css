@@ -37,6 +37,14 @@
   box-shadow: none;
 }
 
+.btnOut {
+    display: none;
+}
+
+.btnOut_active {
+    display: inline-block;
+}
+
 .welcome {
   display: none;
 }
