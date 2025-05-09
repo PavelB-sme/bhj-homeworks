@@ -8,3 +8,16 @@ textarea {
   border: 1px solid #e2e2e2;
   box-sizing: border-box;
 }
+
+.btnClear {
+  display: inline-block;
+  border: 2px solid lightgray;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.btnClear:hover {
+  border: 2px solid red;
+}
